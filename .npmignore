@@ -1,0 +1,7 @@
+.gitignore
+.travis.yml
+src/
+webpack.config.babel.js
+yarn.error
+yarn.lock
+yarn-error.log

@@ -6,6 +6,15 @@ A tiny scrolling library for your in-page links
 - Just 1.1kb gzipped
 - Uses `requestAnimationFrame` for great performance
 
+## Examples
+
+### Codepen
+
+- [Hello world](http://codepen.io/colinmeinke/pen/eBZZVo)
+- [Hello world with options](http://codepen.io/colinmeinke/pen/Vmaadm)
+
+Alternatively, take a look in `/examples`.
+
 ## Installation
 
 ```

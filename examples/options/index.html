@@ -5,7 +5,7 @@
   </head>
 
   <body>
-    <a href="#hello-world" class="js-tinyscroll">
+    <a href="#hello-world" class="hello-world-link">
       Scroll to Hello World section
     </a>
 
@@ -16,7 +16,7 @@
     <script src="../../dist/tinyscroll.min.js"></script>
 
     <script>
-      // The easeOutElastic function is copied directly from
+      // The easeOutElastic function is copied from
       // https://github.com/chenglou/tween-functions
       var easeOutElastic = function (t, b, _c, d) {
         var c = _c - b
@@ -43,10 +43,16 @@
           s = p / (2 * Math.PI) * Math.asin(c / a)
         }
 
-        return a * Math.pow(2, -10 * t) * Math.sin((t * d - s) * (2 * Math.PI) / p) + c + b
+        return a * Math.pow(2, -10 * t) *
+          Math.sin((t * d - s) *
+          (2 * Math.PI) / p) + c + b
       }
 
-      tinyscroll({ ease: easeOutElastic })
+      tinyscroll({
+        duration: 3000,
+        className: 'hello-world-link',
+        ease: easeOutElastic
+      })
     </script>
   </body>
 </html>

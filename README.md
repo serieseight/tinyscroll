@@ -27,9 +27,7 @@ npm install tinyscroll
 <a href="#hello-world" class="js-tinyscroll">
   Scroll to Hello World section
 </a>
-...
-..
-.
+
 <section id="hello-world">
   <h1>Hello world</h1>
 </section>

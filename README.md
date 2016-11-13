@@ -74,6 +74,36 @@ import { easeOutElastic } from 'tween-functions'
 tinyscroll({ ease: easeOutElastic })
 ```
 
+## Data attributes
+
+It can be useful to override Tiny Scroll's options on a
+case-by-case basis.
+
+### duration
+
+In the following case the duration will be 500ms.
+The `tinyscroll` duration option is overridden by the
+`data-duration` attribute on the anchor element.
+
+```html
+<a
+  href="#hello-world"
+  class="js-tinyscroll"
+  data-duration="500"
+>
+  Scroll to Hello World section
+</a>
+
+<section id="hello-world">
+  <h1>Hello world</h1>
+</section>
+```
+
+```js
+import tinyscroll from 'tinyscroll'
+tinyscroll({ duration: 3000 })
+```
+
 ## Browser support
 
 Tiny Scroll is packaged with Babel, and

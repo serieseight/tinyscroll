@@ -12,13 +12,14 @@ const easeInOutQuint = (t, b, _c, d) => {
 
 const init = ({
   className = 'js-tinyscroll',
-  duration = 2000,
+  duration: defaultDuration = 2000,
   ease = easeInOutQuint
 } = {}) => {
   const els = [ ...document.querySelectorAll(`.${className}`) ]
 
   els.map(el => {
     const href = el.getAttribute('href')
+    const duration = parseInt(el.dataset.duration || defaultDuration, 10)
 
     if (href && href.indexOf('#') === 0) {
       const id = href.substring(1)

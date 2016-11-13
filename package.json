@@ -57,6 +57,19 @@
     "tween-functions": "^1.2.0",
     "webpack": "^1.13.3"
   },
+  "keywords": [
+    "anchor",
+    "animate",
+    "ease",
+    "hash",
+    "href",
+    "link",
+    "scroll",
+    "tiny",
+    "transition",
+    "tween",
+    "vanilla"
+  ],
   "license": "ISC",
   "main": "lib/index.js",
   "name": "tinyscroll",

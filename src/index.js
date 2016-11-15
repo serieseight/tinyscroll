@@ -37,10 +37,10 @@ const init = ({
           const time = now - startTime
 
           if (time < duration) {
-            document.body.scrollTop = ease(time, begin, end, duration)
+            window.scrollTo(0, ease(time, begin, end, duration))
             raf(scroll)
           } else {
-            document.body.scrollTop = end
+            window.scrollTo(0, end)
           }
         }
 

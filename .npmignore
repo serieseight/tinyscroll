@@ -1,7 +1,7 @@
 .gitignore
 .travis.yml
+rollup.config.js
 src/
-webpack.config.babel.js
 yarn.error
 yarn.lock
 yarn-error.log

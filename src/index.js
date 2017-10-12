@@ -28,7 +28,7 @@ const init = ({
       el.addEventListener('click', e => {
         e.preventDefault()
 
-        const begin = document.body.scrollTop
+        const begin = document.documentElement.scrollTop || document.body.scrollTop
         const end = begin + target.getBoundingClientRect().top
         const startTime = Date.now()
 

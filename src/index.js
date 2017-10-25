@@ -13,7 +13,8 @@ const easeInOutQuint = (t, b, _c, d) => {
 const init = ({
   className = 'js-tinyscroll',
   duration: defaultDuration = 2000,
-  ease = easeInOutQuint
+  ease = easeInOutQuint,
+  offset = 0
 } = {}) => {
   const els = [ ...document.querySelectorAll(`.${className}`) ]
 
@@ -29,7 +30,7 @@ const init = ({
         e.preventDefault()
 
         const begin = document.documentElement.scrollTop || document.body.scrollTop
-        const end = begin + target.getBoundingClientRect().top
+        const end = begin + target.getBoundingClientRect().top - offset
         const startTime = Date.now()
 
         const scroll = () => {

@@ -52,15 +52,10 @@ const init = ({
 
       el.addEventListener('click', e => {
         e.preventDefault()
-
         scrollTo(target, { duration, ease, offset })
       })
     }
   })
 }
 
-export {
-  scrollTo
-}
-
-export default init
+export { init, scrollTo }

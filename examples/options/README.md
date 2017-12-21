@@ -2,7 +2,7 @@
 
 ## Usage
 
-In this projects root directory:
+In this project's root directory:
 
 ```
 npm install

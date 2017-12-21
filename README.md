@@ -1,10 +1,10 @@
 # Tiny Scroll
 
-A tiny scrolling library for your in-page links
+A tiny scrolling library for your in-page links.
 
-- Plain old vanilla JS
-- Just 1.2kb gzipped
-- Uses `requestAnimationFrame` for great performance
+- Plain old vanilla JS.
+- Just 1.3kb gzipped.
+- Uses `requestAnimationFrame` for great performance.
 
 ## Examples
 
@@ -21,7 +21,12 @@ Alternatively, take a look in `/examples`.
 npm install tinyscroll
 ```
 
-## Usage
+## The `init` function
+
+The Tiny Scroll `init` function looks for all in page links with a certain class name (by default `js-tinyscroll`), and replaces the default click behaviour with a smooth scrolling action.
+
+### Usage
+
 
 ```html
 <a href="#hello-world" class="js-tinyscroll">
@@ -35,33 +40,33 @@ npm install tinyscroll
 
 ```js
 import tinyscroll from 'tinyscroll'
-tinyscroll()
+tinyscroll.init()
 ```
 
-## Options
+### Options
 
-The `tinyscroll` function can take an object, that
+The `init` function can optionally take an object as the first argument, that
 may include the following properties.
 
-### className
+#### className
 
 The class name that Tiny Scroll uses to locate links.
 Defaults to `js-tinyscroll`.
 
 ```js
-tinyscroll({ className: 'my-special-class' })
+tinyscroll.init({ className: 'my-special-class' })
 ```
 
-### duration
+#### duration
 
 The scroll duration in milliseconds.
 Defaults to 2000.
 
 ```js
-tinyscroll({ duration: 500 })
+tinyscroll.init({ duration: 500 })
 ```
 
-### ease
+#### ease
 
 The tweening function that is used to ease scroll position.
 Defaults to `easeInOutQuint`. Only `easeInOutQuint` is built
@@ -71,7 +76,69 @@ a function from
 
 ```js
 import { easeOutElastic } from 'tween-functions'
-tinyscroll({ ease: easeOutElastic })
+tinyscroll.init({ ease: easeOutElastic })
+```
+
+## The `scrollTo` function
+
+The `scrollTo` function is used to smoothly scroll to any element within a page. A target DOM node must be passed into the `scrollTo` function as the first argument.
+
+### Usage
+
+
+```html
+<button type="button">
+  Scroll to Hello World section
+</button>
+
+<section>
+  <h1>Hello world</h1>
+</section>
+```
+
+```js
+import tinyscroll from 'tinyscroll'
+
+const trigger = document.querySelector('button')
+const target = document.querySelector('section')
+
+trigger.addEventListener('click', () => {
+  tinyscroll.scrollTo(target)
+})
+```
+
+### Options
+
+The `scrollTo` function can optionally take an object as the second argument, that may include the following properties.
+
+#### duration
+
+The scroll duration in milliseconds.
+Defaults to 2000.
+
+```js
+tinyscroll.scrollTo(target, { duration: 500 })
+```
+
+#### ease
+
+The tweening function that is used to ease scroll position.
+Defaults to `easeInOutQuint`. Only `easeInOutQuint` is built
+in. Using this property will require you to import and use
+a function from
+[tween-functions](https://github.com/chenglou/tween-functions).
+
+```js
+import { easeOutElastic } from 'tween-functions'
+tinyscroll.scrollTo(target, { ease: easeOutElastic })
+```
+
+#### offset
+
+The number of pixels to offset the scroll to endpoint by. Defaults to 0.
+
+```js
+tinyscroll.scrollTo(target, { offset: -200 })
 ```
 
 ## Data attributes
@@ -101,7 +168,7 @@ The `tinyscroll` duration option is overridden by the
 
 ```js
 import tinyscroll from 'tinyscroll'
-tinyscroll({ duration: 3000 })
+tinyscroll.init({ duration: 3000 })
 ```
 
 ## Browser support

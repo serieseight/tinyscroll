@@ -23,7 +23,8 @@ npm install tinyscroll
 
 ## The `init` function
 
-The Tiny Scroll `init` function looks for all in page links with a certain class name (by default `js-tinyscroll`), and replaces the default click behaviour with a smooth scrolling action.
+The Tiny Scroll `init` function looks for all in page links with a certain class name (by default `js-tinyscroll`), and replaces the default click behaviour with
+a smooth scrolling action.
 
 ### Usage
 
@@ -39,7 +40,7 @@ The Tiny Scroll `init` function looks for all in page links with a certain class
 ```
 
 ```js
-import tinyscroll from 'tinyscroll'
+import * as tinyscroll from 'tinyscroll'
 tinyscroll.init()
 ```
 
@@ -97,7 +98,7 @@ The `scrollTo` function is used to smoothly scroll to any element within a page.
 ```
 
 ```js
-import tinyscroll from 'tinyscroll'
+import * as tinyscroll from 'tinyscroll'
 
 const trigger = document.querySelector('button')
 const target = document.querySelector('section')
@@ -167,7 +168,7 @@ The `tinyscroll` duration option is overridden by the
 ```
 
 ```js
-import tinyscroll from 'tinyscroll'
+import * as tinyscroll from 'tinyscroll'
 tinyscroll.init({ duration: 3000 })
 ```
 

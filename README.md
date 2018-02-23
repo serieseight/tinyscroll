@@ -154,6 +154,18 @@ The number of pixels to offset the scroll to endpoint by. Defaults to 0.
 tinyscroll.scrollTo(target, { offset: -200 })
 ```
 
+#### callback
+
+A callback function which will automatically be triggered after Tiny Scroll is done.
+
+```js
+tinyscroll.scrollTo(target, {
+  callback() {
+    alert('Done!')
+  }
+})
+```
+
 ## Data attributes
 
 It can be useful to override Tiny Scroll's options on a

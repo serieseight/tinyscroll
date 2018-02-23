@@ -80,6 +80,18 @@ import { easeOutElastic } from 'tween-functions'
 tinyscroll.init({ ease: easeOutElastic })
 ```
 
+#### callback
+
+A callback function which will automatically be triggered after Tiny Scroll is done.
+
+```js
+tinyscroll.init({
+  callback: function() {
+    alert('Done!')
+  }
+})
+```
+
 ## The `scrollTo` function
 
 The `scrollTo` function is used to smoothly scroll to any element within a page. A target DOM node must be passed into the `scrollTo` function as the first argument.

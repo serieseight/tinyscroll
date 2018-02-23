@@ -13,7 +13,8 @@ const easeInOutQuint = (t, b, _c, d) => {
 const scrollTo = (target, {
   duration = 2000,
   ease = easeInOutQuint,
-  offset = 0
+  offset = 0,
+  callback = null,
 } = {}) => {
   const begin = document.documentElement.scrollTop || document.body.scrollTop
   const end = begin + target.getBoundingClientRect().top - offset
@@ -28,6 +29,10 @@ const scrollTo = (target, {
       raf(scroll)
     } else {
       window.scrollTo(0, end)
+
+      if (callback) {
+        callback()
+      }
     }
   }
 
@@ -38,7 +43,8 @@ const init = ({
   className = 'js-tinyscroll',
   duration: defaultDuration = 2000,
   ease = easeInOutQuint,
-  offset = 0
+  offset = 0,
+  callback = null,
 } = {}) => {
   const els = [ ...document.querySelectorAll(`.${className}`) ]
 
@@ -52,7 +58,7 @@ const init = ({
 
       el.addEventListener('click', e => {
         e.preventDefault()
-        scrollTo(target, { duration, ease, offset })
+        scrollTo(target, { duration, ease, offset, callback })
       })
     }
   })

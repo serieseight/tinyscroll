@@ -52,7 +52,10 @@
         duration: 3000,
         className: 'hello-world-link',
         ease: easeOutElastic,
-        offset: 100
+        offset: 100,
+        callback: function() {
+          alert('Done!')
+        }
       })
     </script>
   </body>

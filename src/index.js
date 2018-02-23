@@ -14,7 +14,7 @@ const scrollTo = (target, {
   duration = 2000,
   ease = easeInOutQuint,
   offset = 0,
-  callback = null,
+  callback = null
 } = {}) => {
   const begin = document.documentElement.scrollTop || document.body.scrollTop
   const end = begin + target.getBoundingClientRect().top - offset
@@ -44,7 +44,7 @@ const init = ({
   duration: defaultDuration = 2000,
   ease = easeInOutQuint,
   offset = 0,
-  callback = null,
+  callback = null
 } = {}) => {
   const els = [ ...document.querySelectorAll(`.${className}`) ]
 

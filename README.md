@@ -3,7 +3,7 @@
 A tiny scrolling library for your in-page links.
 
 - Plain old vanilla JS.
-- Just 1.3kb gzipped.
+- Just 1.6kb gzipped.
 - Uses `requestAnimationFrame` for great performance.
 
 ## Examples

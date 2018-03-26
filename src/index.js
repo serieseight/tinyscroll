@@ -10,6 +10,17 @@ const easeInOutQuint = (t, b, _c, d) => {
   }
 }
 
+const hash = x => {
+  if (x.indexOf('#') !== -1) {
+    const [ url, id ] = x.split('#')
+
+    return {
+      url: url !== '' ? url : undefined,
+      id
+    }
+  }
+}
+
 const scrollTo = (target, {
   duration = 2000,
   ease = easeInOutQuint,
@@ -50,16 +61,25 @@ const init = ({
 
   els.map(el => {
     const href = el.getAttribute('href')
-    const duration = parseInt(el.dataset.duration || defaultDuration, 10)
 
-    if (href && href.indexOf('#') === 0) {
-      const id = href.substring(1)
-      const target = document.getElementById(id)
+    if (href) {
+      const { url, id } = hash(href)
 
-      el.addEventListener('click', e => {
-        e.preventDefault()
-        scrollTo(target, { duration, ease, offset, callback })
-      })
+      if (id && (
+        !url ||
+        url === window.location.pathname ||
+        url === `${window.location.origin}${window.location.pathname}`
+      )) {
+        const target = document.getElementById(id)
+        const duration = parseInt(el.dataset.duration || defaultDuration, 10)
+
+        if (target) {
+          el.addEventListener('click', e => {
+            e.preventDefault()
+            scrollTo(target, { duration, ease, offset, callback })
+          })
+        }
+      }
     }
   })
 }

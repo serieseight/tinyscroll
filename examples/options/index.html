@@ -53,9 +53,7 @@
         className: 'hello-world-link',
         ease: easeOutElastic,
         offset: 100,
-        callback: function() {
-          alert('Done!')
-        }
+        onComplete: () => alert('Scroll complete')
       })
     </script>
   </body>

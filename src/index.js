@@ -25,24 +25,62 @@ const scrollTo = (target, {
   duration = 2000,
   ease = easeInOutQuint,
   offset = 0,
-  callback = null
+  onStart,
+  onComplete,
+  onCancel
 } = {}) => {
+  if (typeof onStart === 'function') {
+    onStart()
+  }
+
   const begin = document.documentElement.scrollTop || document.body.scrollTop
   const end = begin + target.getBoundingClientRect().top - offset
   const startTime = Date.now()
 
+  let cancelled = false
+
+  const cancel = e => {
+    const position = document.documentElement.scrollTop || document.body.scrollTop
+    const tinyscrollPosition = Math.floor(document.body.getAttribute('data-tinyscroll-position'))
+
+    if (position !== tinyscrollPosition) {
+      cancelled = true
+    }
+  }
+
+  window.addEventListener('scroll', cancel, false)
+
   const scroll = () => {
+    if (cancelled) {
+      window.removeEventListener('scroll', cancel, false)
+
+      document.body.removeAttribute('data-tinyscroll-position')
+
+      if (typeof onCancel === 'function') {
+        onCancel()
+      }
+
+      return
+    }
+
     const now = Date.now()
     const time = now - startTime
 
     if (time < duration) {
-      window.scrollTo(0, ease(time, begin, end, duration))
+      const position = ease(time, begin, end, duration)
+
+      document.body.setAttribute('data-tinyscroll-position', position)
+
+      window.scrollTo(0, position)
+
       raf(scroll)
     } else {
       window.scrollTo(0, end)
 
-      if (callback) {
-        callback()
+      document.body.removeAttribute('data-tinyscroll-position')
+
+      if (typeof onComplete === 'function') {
+        onComplete()
       }
     }
   }
@@ -55,7 +93,9 @@ const init = ({
   duration: defaultDuration = 2000,
   ease = easeInOutQuint,
   offset = 0,
-  callback = null
+  onStart,
+  onComplete,
+  onCancel
 } = {}) => {
   const els = [ ...document.querySelectorAll(`.${className}`) ]
 
@@ -76,7 +116,7 @@ const init = ({
         if (target) {
           el.addEventListener('click', e => {
             e.preventDefault()
-            scrollTo(target, { duration, ease, offset, callback })
+            scrollTo(target, { duration, ease, offset, onStart, onComplete, onCancel })
           })
         }
       }

@@ -3,8 +3,9 @@
 A tiny scrolling library for your in-page links.
 
 - Plain old vanilla JS.
-- Just 1.6kb gzipped.
+- Just 1.7kb gzipped.
 - Uses `requestAnimationFrame` for great performance.
+- Does **not** block user scroll.
 
 ## Examples
 
@@ -76,19 +77,37 @@ a function from
 [tween-functions](https://github.com/chenglou/tween-functions).
 
 ```js
-import { easeOutElastic } from 'tween-functions'
-tinyscroll.init({ ease: easeOutElastic })
+import ease from 'tween-functions'
+tinyscroll.init({ ease: ease.easeOutElastic })
 ```
 
-#### callback
+#### onStart
 
-A callback function which will automatically be triggered after Tiny Scroll is done.
+A callback function triggered when scroll starts.
 
 ```js
 tinyscroll.init({
-  callback: function() {
-    alert('Done!')
-  }
+  onStart: () => alert('Scroll started')
+})
+```
+
+#### onComplete
+
+A callback function triggered when scroll is complete.
+
+```js
+tinyscroll.init({
+  onComplete: () => alert('Scroll complete')
+})
+```
+
+#### onCancel
+
+A callback function triggered if scroll is cancelled by user.
+
+```js
+tinyscroll.init({
+  onCancel: () => alert('Scroll cancelled')
 })
 ```
 
@@ -142,8 +161,8 @@ a function from
 [tween-functions](https://github.com/chenglou/tween-functions).
 
 ```js
-import { easeOutElastic } from 'tween-functions'
-tinyscroll.scrollTo(target, { ease: easeOutElastic })
+import ease from 'tween-functions'
+tinyscroll.scrollTo(target, { ease: ease.easeOutElastic })
 ```
 
 #### offset
@@ -154,15 +173,33 @@ The number of pixels to offset the scroll to endpoint by. Defaults to 0.
 tinyscroll.scrollTo(target, { offset: -200 })
 ```
 
-#### callback
+#### onStart
 
-A callback function which will automatically be triggered after Tiny Scroll is done.
+A callback function triggered when scroll starts.
 
 ```js
 tinyscroll.scrollTo(target, {
-  callback() {
-    alert('Done!')
-  }
+  onStart: () => alert('Scroll started')
+})
+```
+
+#### onComplete
+
+A callback function triggered when scroll is complete.
+
+```js
+tinyscroll.scrollTo(target, {
+  onComplete: () => alert('Scroll complete')
+})
+```
+
+#### onCancel
+
+A callback function triggered if scroll is cancelled by user.
+
+```js
+tinyscroll.scrollTo(target, {
+  onCancel: () => alert('Scroll cancelled')
 })
 ```
 

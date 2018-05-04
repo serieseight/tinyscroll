@@ -22,6 +22,7 @@ const hash = x => {
 }
 
 const scrollTo = (target, {
+  blockCancel = false,
   duration = 2000,
   ease = easeInOutQuint,
   offset = 0,
@@ -48,7 +49,9 @@ const scrollTo = (target, {
     }
   }
 
-  window.addEventListener('scroll', cancel, false)
+  if (!blockCancel) {
+    window.addEventListener('scroll', cancel, false)
+  }
 
   const scroll = () => {
     if (cancelled) {
@@ -89,6 +92,7 @@ const scrollTo = (target, {
 }
 
 const init = ({
+  blockCancel = false,
   className = 'js-tinyscroll',
   duration: defaultDuration = 2000,
   ease = easeInOutQuint,
@@ -116,7 +120,7 @@ const init = ({
         if (target) {
           el.addEventListener('click', e => {
             e.preventDefault()
-            scrollTo(target, { duration, ease, offset, onStart, onComplete, onCancel })
+            scrollTo(target, { blockCancel, duration, ease, offset, onStart, onComplete, onCancel })
           })
         }
       }
